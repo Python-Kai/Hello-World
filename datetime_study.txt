@@ -1,0 +1,31 @@
+1. 获取当前日期和时间：
+from datatime import datetime
+now = datetime.now()
+
+2. 指定某个日期和时间，用参数构造一个datetime:
+dt = datetime(2020, 11, 28, 12, 7, 0)
+
+3. datatime 转换为timestamp
+我们把1970年1月1日00:00:00 UTC+00:00时区的时刻称为epoch time，记为0（1970年以前的时间timestamp为负数），当前时间就是相对于epoch time的秒数，称为timestamp。
+（经测试，最少到1970-1-2 08:00:00 'UTC+8:00' 才不会报错，什么鬼）
+stamp = dt.datetime()
+stamp 为浮点数，整数位表示秒。
+
+4. timestamp 转换为datetime
+使用datetime提供的fromtimestamp()方法：
+dt = datetime.fromtimestamp(stamp)
+timestamp是一个浮点数，它没有时区的概念，而datetime是有时区的。上述转换时在timestamp和本地时间做转换。
+
+本地时间时当前操作系统设定的时区。例如北京时区是东8时，则本地时间
+2020-11-28 12:30:00
+实际上是UTC+8:00时区的时间： 2020-11-28 12:30:00 UTC+8:00
+而格林威治的标准时间与北京时间差了8小时，UTC+0:00时区的时间应该是2020-11-28 04:30:00 UTC+0:00
+
+timestamp 也可以直接转换到UTC标准时区的时间：
+t = 1429417200.0
+dt = datetime.fromtimestamp(t)  # 本地时间
+dt = datetime.utcfromtimestamp(t) # UTC时间
+
+
+
+
