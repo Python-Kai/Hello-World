@@ -26,6 +26,35 @@ t = 1429417200.0
 dt = datetime.fromtimestamp(t)  # 本地时间
 dt = datetime.utcfromtimestamp(t) # UTC时间
 
+5. str转换为datetime
+cday = datetime.strptime('2020-11-28 15:49:59', '%Y-%m-%d %H:%M:%S')
+转换后的datetime是没有时区信息的。
+
+6. datetime转换为str
+now = datetime.now()
+now.strftime('%a, %b %d %H:%M:HS'))
+
+7. datetime加减
+now = datetime.now()
+now + timedelta(hours = 10)
+now + timedelta(days = 1)
+now + timedelta(days = 2, hours = 12)
+
+8. 将本地时间转换为UTC时间
+now = datetime.now()
+tz_utc_8 = timezone(timedelta(hours=8))
+dt = now.replace(tzinfo = tz_utc_8)
+
+9.时区转换
+utcnow()
+# 拿到UTC时间，并强制设置时区为UTC+0:00：
+utc_dt = datetime.utcnow().replace(tzinfo = timezone.utc)
+# astimezone()将转换时区为北京时间：
+bj_dt = utc_dt.astimezone(tzinfo = timezone(timedelta(hours = 8)))
+# astimezone()将转换时区为东京时间:
+tokyo_dt = utc_dt.replace(tzinfo = timezone(timedelta(hours = 9)))
+# astimezone()将bj_dt转换时区为东京时间:
+tokyo_dt2 = bj_dt.replace(tzinfo = timezone(timezone(timedelta(hours=9)))
 
 
 
