@@ -1,0 +1,11 @@
+dict.get(key, default_value) #带默认值的get方法，会在key参数不是字典的键时返回None，而pop会抛出异常。
+dict.setdefault(key, []).append(value) # 与get方法类似，当key不是字典的键时，会新建一个key，值为[],如果key属于字典，则将value添加到key对应的值列表中。
+dict1.update(dict2) #使用update方法将dict2合并到dict1中。
+
+zip
+seq1 = ['foo', 'bar', 'baz'], seq2 = ['one', 'two', 'three']
+zipped = zep(seq1, seq2)
+name_list = list(zipped) # [('foo', 'one'),('bar', 'two'), ('baz', 'three')]
+
+拆分zip
+first_name, last_name = zip(*name_list) # first_name = ('foo', 'bar', 'baz'), last_name = ('one', 'two', 'three')
